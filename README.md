@@ -1,2 +1,1 @@
-# 90-day-challange-day-1-
-C++ code to reverse a number
+These Repositary will contain C++ code which will cover DSA and clear the concepts of DSA.
