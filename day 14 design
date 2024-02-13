@@ -1,0 +1,36 @@
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    cout<<"Enter the Number ";
+    int number;
+    cin>>number;
+    int num=number;
+
+
+    for(int row=1; row<=number ; row++)
+    {
+
+
+        for(int col=0; col<=number-row; col++){
+            cout<<col+1<<" ";
+        }
+
+        int temp = row;
+        while(temp-1 > 0){
+            cout<<"* * ";
+            temp--;
+        }
+
+        for(int i=num ; i>0; i-- )
+        {
+            cout<< i<<" ";
+            
+        }    
+        num--;
+
+        cout<<endl;
+    }
+}
