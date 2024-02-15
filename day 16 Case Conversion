@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    string str ="ahudgkfjAslsFDjlfdsjnifj";
+    string output;
+    for(int i =0; i<str.length(); i++)
+    {
+        if(str[i] >= 'a' && str[i] <= 'z')  // To convert into uppercase
+        {
+            output.push_back(str[i] - 'a' + 'A');
+        }
+        //if(str[i] >= 'A' && str[i] <= 'Z')  // To convert into Lowercase
+        //{
+        //    // output.push_back(str[i] - 'a' + 'A');
+        //    output.push_back(str[i] - 'A' + 'a');
+        //}
+        else
+        {
+            output.push_back(str[i]);
+        }
+    }
+    cout<<output;
+    
+    return 0;
+}
