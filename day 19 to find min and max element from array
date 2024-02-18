@@ -1,0 +1,49 @@
+
+#include <iostream>
+#include <limits.h>
+
+using namespace std;
+
+
+int main()
+{
+    int max = INT32_MIN;
+    int min = INT32_MAX;
+
+    int number;
+    cout<<"Enter the size of array : ";
+    cin>>number;
+    int array[number];
+
+    for(int i = 0; i<number; i++ )
+    {
+        cout<<"Enter Element at "<<i+1<<" position in array : ";
+        cin>>array[i];
+        cout<<endl;
+    }
+
+    cout<<"Given array is "<<endl;
+    for(int i = 0; i<number; i++ )
+    {
+        cout<<array[i]<<" ";
+    }
+
+    cout<<endl;
+
+    for(int i = 0; i<number; i++)
+    {
+        if(array[i] > max)
+        {
+            swap(array[i], max);
+        }
+        else if(array[i] < min)
+        {
+            swap(array[i], min);
+        }
+    }
+
+    cout<<"Maximum Element in the array is : "<<max<<endl;
+    cout<<"Minimum Element in the array is : "<<min<<endl;
+
+    return 0;
+}
