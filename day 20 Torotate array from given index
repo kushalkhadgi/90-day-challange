@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int arr[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
+	int number = sizeof(arr) / sizeof(arr[0]);
+	int d;
+  cout<<"enter the degree : ";
+  cin>>d;
+
+  int temp[number];
+	int k = 0;
+
+  //To copy all the elements from degree to end 
+  for (int i = d; i < number; i++) { 
+		temp[k] = arr[i];
+		k++;
+	}
+
+//To cpy all the elements from start to degree
+	for (int i = 0; i < d; i++) {
+		temp[k] = arr[i];
+		k++;
+	}
+
+//To copy entire temporary array into original
+	for (int i = 0; i < number; i++) {
+		arr[i] = temp[i];
+	}
+  
+
+//To print output
+	for (int i = 0; i < number; i++) {
+		cout << arr[i] << " ";
+	}
+
+	return 0;
+}
