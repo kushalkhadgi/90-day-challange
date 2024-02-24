@@ -1,0 +1,42 @@
+
+#include <iostream>
+using namespace std;
+
+int linearsearch(int number, int array[], int key)
+{
+    for(int i = 0; i < number; i++)
+    {
+        if(key == array[i])
+            return i;
+    }
+    return 0;
+}
+int main()
+{
+    int number;
+    cout<<"Enter the length of array : ";
+    cin>>number;
+    
+    int array[number];
+    for(int i = 0; i < number; i++)
+    {
+        cin>>array[i];
+    }
+    
+    int key;
+    cout<<"Enter the number to search : ";
+    cin>>key;
+    
+    int result = linearsearch(number, array, key);
+    
+    if(result == 0)
+    {
+        cout<<"Key is not present in array";
+    }
+    else
+    {
+        cout<<"Key is present at "<<result + 1 <<" position in array";
+    }
+
+    return 0;
+}
