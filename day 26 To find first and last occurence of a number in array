@@ -1,0 +1,84 @@
+
+#include <iostream>
+using namespace std;
+
+int search(int array[],int key,int number, pair<int,int>&p)
+{
+    int start = 0, end = number - 1, mid;
+
+    //OCCURENCE
+    while(start <= end)
+    {
+        mid = start + (end - start)/2;
+
+        if(array[mid] == key)
+        {
+            p.first = mid;
+            end = mid - 1;
+            if(start > end)
+                break;
+        }
+        else if(array[mid] > key)
+        {
+            end = mid - 1;
+        }
+        else
+        {
+            start = mid + 1;
+        }
+        
+    }
+
+
+    //END
+    start = 0;
+    end = number - 1;
+    while(start <= end)
+    {
+        mid = start + (end - start)/2;
+
+        if(array[mid] == key)
+        {
+            p.second = mid;
+            start = mid + 1;
+            if(start > end)
+                break;
+        }
+        else if(array[mid] > key)
+        {
+            end = mid - 1;
+        }
+        else
+        {
+            start = mid + 1;
+        }
+
+    }
+    
+}
+
+
+int main()
+{
+    int array[10] = {0,0,0,0,1,1,1,1,2,2};
+    pair<int, int>p;
+
+    p.first = -1;
+    p.second = -1;
+    int key;
+    cout<<"Enter the number to search : ";
+    cin>>key;
+    search(array, key, 10, p);
+
+    
+    if(p.first != -1 || p.second != -1)
+    {
+        cout<<"occurece : "<<p.first<<endl;
+        cout<<"End : "<<p.second<<endl;
+    }
+    else
+    {
+        cout<<"1 is not present in teh array ";
+    }
+    return 0;
+}
