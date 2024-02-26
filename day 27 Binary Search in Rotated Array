@@ -1,0 +1,75 @@
+
+#include <iostream>
+using namespace std;
+
+int biarysearch(int array[], int start, int end, int key)
+{
+    int mid;
+    while(start <= end)
+    {
+        mid = start+(end - start)/2;
+        if(array[mid] == key)
+        {
+            return mid;
+        }
+        else if(array[mid] > key)
+        {
+            end = mid;
+        }
+        else{
+            start = mid + 1;
+        }
+    }
+    return -1;
+}
+
+int binaryrotated(int array[], int number, int key)
+{
+    int start = 0;
+    int end = number - 1;
+    int mid, pivot;
+    while(start < end)
+    {
+        mid = start + (end - start)/2;
+
+        if(array[mid] > array[mid + 1] )
+        {
+            pivot = mid + 1;
+            break;
+        }
+
+        if(array[mid] > array[start])
+        {
+            start = mid + 1;
+        }
+        else
+        {
+            end = mid;
+        }
+        pivot = start;
+    }
+    if(array[pivot] > key)
+    {
+        return biarysearch(array,0, pivot, key);
+    }
+    else{
+        return biarysearch(array, pivot, number, key);
+    }
+}
+
+int main()
+{
+    int array[10] = {12, 15, 17, 28, 41,100,50,55,56,78};
+
+    int result = binaryrotated(array, 10, 41);
+
+    if(result == -1)
+    {
+        cout<<"not present";
+    }
+    else{
+        cout<<"number is on : "<<result;
+    }
+
+    return 0;
+}
