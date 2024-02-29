@@ -1,0 +1,43 @@
+
+#include <iostream>
+using namespace std;
+
+int insertionsort(int array[], int number)
+{
+    for(int i=1; i<=number; i++)
+    {
+        int temp = array[i];
+        int j = i-1;
+        while(j>=0)
+        {
+            if(array[j] > temp)
+            {
+                array[j+1] = array[j]; 
+                // j--;
+            }
+            else
+            {
+                break;
+            }
+            j--;
+        }
+        array[j+1] = temp;
+    }
+    return 0;
+}
+
+int main()
+{
+    int array[10] = {32,54,76,23,74,13,98,16,27,62};
+    // int array[10] = {23,34,54,7,45,25,34,86,23,54};
+    int number = sizeof(array) / sizeof(array[7]);
+    // cout<<number<<endl;
+
+    insertionsort(array, number-1);
+
+    for(int i=0; i<number; i++)
+    {
+        cout<<array[i]<<" ";
+    }
+    return 0;
+}
