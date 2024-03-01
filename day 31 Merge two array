@@ -1,0 +1,54 @@
+
+#include <iostream>
+using namespace std;
+
+int merge(int array1[], int number1, int array2[], int number2, int result[])
+{
+    int i=0, j=0, z=0;
+    while(i<number1 && j<number2)
+    {
+        if(array1[i] > array2[j])
+        {
+            result[z]= array2[j];
+            j++;
+            z++;
+        }
+        else
+        {
+            result[z] = array1[i];
+            i++;
+            z++;
+        }
+    }
+    while(i<number1)
+    {
+        result[z] = array1[i];
+        z++;
+        i++;
+    }
+    while(j<number2)
+    {
+        result[z] = array2[j];
+        z++;
+        j++;
+    }
+}
+int main()
+{
+    int array1[10] = {11,12,23,34,45,56,67,78,89,90};
+    int number1 = 10;
+
+    int array2[5] = {1,4,55,100,103};
+    int number2 = 5;
+
+    int resultnumber = number1 + number2;  
+    int result[resultnumber];
+
+    merge(array1, number1, array2, number2, result);
+
+    for(int i=0; i<resultnumber; i++)
+    {
+        cout<<result[i]<<"  ";
+    }
+    return 0;
+}
