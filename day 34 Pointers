@@ -1,0 +1,63 @@
+int main()
+{
+    int num = 10;
+    int *pr = &num;
+    int ptr= num;
+
+    cout<<pr<<endl;  
+    cout<<*pr<<endl;
+    cout<<&pr;  
+
+
+    char ch[6] = "abcde";
+    char *c = ch;
+
+    cout<<&ch<<endl;
+    cout<<&c;
+
+    int i = 19344;
+    int &j = i;
+
+    cout<<&i<<" "<<&j<<endl;
+    j++;
+    cout<<i;
+
+
+    int n;
+    cin>>n;
+
+    int **arr = new int *[n];
+
+    for(int i=0; i<n; i++)
+    {
+        arr[i] = new int[n];
+    }
+
+    for(int i=0; i<n; i++)
+    {
+        for(int j=0; j<n; j++)
+        {
+            cin>>arr[i][j];
+        }
+    }
+
+    for(int i=0; i<n; i++)
+    {
+        for(int j=0; j<n; j++)
+        {
+            cout<<arr[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+}
+
+
+
+int main()
+{
+    for(float i=1; i<=10; i++)
+    {
+        cout<<"29 * "<<i <<" = "<<29*i<<endl; 
+    }
+    return 0;
+}
