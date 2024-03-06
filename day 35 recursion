@@ -1,0 +1,23 @@
+
+#include <iostream>
+using  namespace std;
+
+int power(int number)
+{
+    if(number == 0)
+        return 1;
+    else{
+        int multiply = 2 * power(number - 1);
+        return multiply;}
+}
+
+int main()
+{
+    int number;
+    cout<<"Enter a number : ";
+    cin>>number;
+
+    int answer = power(number);
+
+    cout<<answer;
+}
