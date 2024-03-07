@@ -1,0 +1,60 @@
+void sum(int *array, int target, pair<int, int> &answer, int length, int i, int j)
+{
+    // int length = sizeof(array) / sizeof(array[0]);
+
+    if (array[i] + array[j] == target)
+    {
+        answer.first = i;
+        answer.second = j;
+        return;
+    }
+
+    if(j < length)
+    {
+        sum(array, target, answer, length, i, j+1);
+    }
+    else{
+        sum(array, target, answer, length, i + 1, i+2);
+    }
+    // for ( ; i < length; i++)
+    // {
+    //     j = i + 1;
+    //     for ( ; j < length; j++) 
+    //     {
+    //        sum(array, target, answer, length, i, j);
+    //     }
+    // }
+
+    return;
+}
+
+int main()
+{
+    int number = 10;
+    int array[number];
+
+    cout << "Enter the numbers in the array" << endl;
+    for (int i = 0; i < number; i++)
+    {
+        cin >> array[i];
+    }
+
+    int target = 10;
+
+    pair<int, int> answer;
+    answer.first = answer.second = -1;
+    int i = 0;
+
+    sum(array, target, answer, number, i, i+1);
+
+    if (answer.first == -1 && answer.second == -1)
+    {
+        cout << "Not found";
+    }
+    else
+    {
+        cout << "Sum of " << array[answer.first] << " + " << array[answer.second] << " = " << target;
+    }
+
+    return 0;
+}
