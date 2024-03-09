@@ -1,0 +1,78 @@
+
+#include <vector>
+#include <iostream>
+using namespace std;
+
+void merge(int length, int array1[], int array2[],vector<int> &answer )
+{
+    int i = 0, j = 0;
+    while(i != length && j != length)
+    {
+        if(array1[i] <= array2[j])
+        {
+            answer.push_back(array1[i++]);
+        } 
+        else
+        {
+            answer.push_back(array2[j++]);
+        }
+    }
+
+    while (i < length)
+    {
+        answer.push_back(array1[i++]);
+    }
+    while (j < length)
+    {
+        answer.push_back(array2[j++]);
+    }
+
+    for(int i: answer)
+    {
+        cout<<i<<" ";
+    }
+
+
+    return;
+}
+
+int median(vector<int>answer)
+{
+    int length = answer.size();
+
+    if(length & 1)
+    {
+        return answer.at((length)/2);
+    }
+    else
+    {
+        return (answer.at(length / 2) + answer.at((length + 2) /2)) /2;
+    }
+}
+
+int main()
+{
+    int number = 5;
+    int array1[number], array2[number];
+    vector<int> answer;
+
+    cout<<"Enter the element in 1st array"<<endl;
+    for(int i=0; i<number; i++)
+    {
+        cin>>array1[i];
+    }
+
+    cout<<"Enter the element in 2nd array"<<endl;
+    for(int j=0; j<number; j++)
+    {
+        cin>>array2[j];
+    }
+
+    merge(number, array1, array2, answer );
+
+    int result = median(answer);
+
+    cout<<"Median is : "<<result;
+
+    return 0;
+}
