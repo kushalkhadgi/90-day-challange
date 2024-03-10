@@ -1,0 +1,25 @@
+#include <iostream>
+#include<cstring>
+using namespace std;
+int main()
+{
+    int input;
+    cin>>input;
+    string roman;
+
+    int number[] = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+    string symbol[] = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+
+    for(auto i = 0; i<sizeof(number) / sizeof(number[0]); i++ )
+    {
+        while(input >= number[i])
+        {
+            // roman.push_back(symbol[i][0]);
+            roman.append(symbol[i]);
+            input -= number[i];
+        }
+    }
+
+    cout<<roman;
+    return 0;
+}
