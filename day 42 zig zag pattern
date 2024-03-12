@@ -1,0 +1,41 @@
+
+#include <iostream>
+using namespace std;
+
+
+string cpattern(string input, int number)
+{
+    string result;
+    if(number == 1)
+        return input;
+
+    int jump = (number - 1) * 2;
+    for(int i = 0; i < number; i++)
+    {
+        for(int j = i;j < input.size(); j += jump)
+        {
+            result.push_back(input[j]);
+            if(i > 0 && i < number - 1 && (j + jump - 2 * i) < input.size())
+            {
+                result += input[j + jump - 2 *i];
+            }
+        }
+    }
+    return result;
+}
+
+int main()
+{
+    string input;
+    cout<<"Enter the string : ";
+    cin>>input;
+
+    int number;
+    cout<<"Enter the number of Rows : ";
+    cin>>number;
+
+    string result = cpattern(input, number);
+
+    cout<<result;
+    return 0;
+}
