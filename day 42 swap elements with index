@@ -1,0 +1,49 @@
+
+#include <iostream>
+using namespace std;
+
+void swapping(int number, int array[], int index)
+{
+    for(int i = 0; i < number; i += index)
+    {
+        int start = i;
+        int end = i+index-1;
+
+        while (start < end)
+        {
+            swap(array[start++], array[end--]);
+        }
+    }
+}
+
+int main()
+{
+    int number;
+    cout<<"Enter the numner of elements in array : ";
+    cin>> number;
+
+    int index;
+    cout<<"Enter the number to swap : ";
+    cin>>index;
+
+    if(number % index != 0)
+    {
+        cout<<"Please enter valid index"<<endl;
+        return main();
+    }
+    
+    int array[number];
+    cout<<"Enter the array for swapping "<<endl;
+    for(auto i=0; i<number; i++)
+    {
+        cin>>array[i];
+    }
+
+    swapping(number, array, index);
+
+    for(auto i = 0; i<number; i++)
+    {
+        cout<<array[i]<<" ";
+    }
+    return 0;
+}
