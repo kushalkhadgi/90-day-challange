@@ -1,0 +1,31 @@
+
+#include <iostream>
+using namespace std;
+
+void Fibonacci(int number, int array[])
+{
+    for(int i = 2; i < number; i++)
+    {
+        array[i] = array[i - 1] + array[i - 2];
+    }
+}
+
+int main()
+{
+    int number;
+    cout<<"Enter the length : ";
+    cin>> number;
+
+    int array[number] = {0};
+
+    array[0] = 0; 
+    array[1] = 1;
+
+    Fibonacci(number, array);
+
+    for(auto i: array)
+    {
+        cout<<i<<" ";
+    }
+    return 0;
+}
