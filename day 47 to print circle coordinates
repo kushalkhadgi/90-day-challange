@@ -1,0 +1,51 @@
+bool checkInsert(int coordinateX[], int coordinateY[], int x, int y)
+{
+    for(int i = 0; i < 360; i++)
+    {
+        if(coordinateX[i] == x && coordinateY[i] == y)
+            return false;
+    }
+    return true;
+}
+
+void drawCircle(int centerX, int centerY, int radius)
+{
+    float x, y;
+
+    int coordinateX[360];
+    int coordinateY[360];
+    int num = 0;
+
+    for(auto i = 0; i <= 360; i++)
+    {
+        x = radius * sin(i * M_PI/180) + centerX;
+        y = radius * cos(i * M_PI/180) + centerY;
+
+        bool flag = checkInsert(coordinateX, coordinateY, round(x), round(y));
+        if(flag)
+        {
+            coordinateX[num] = round(x);
+            coordinateY[num] = round(y);
+            cout<<"("<<round(x)<<", "<<round(y)<<")"<<endl;
+            num++;
+        }
+    }
+    return;
+}
+
+int main()
+{
+    int centerX, centerY;
+    int radius;
+    cout<<"Enter the radius of circle : ";
+    cin>>radius;
+
+    cout<<"Enter the value for X and Y center coordinates of the circle : ";
+    cin>>centerX>> centerY;
+
+    cout<<endl<<"Center of circle is ("<<centerX<<", "<<centerY<<") with radius "<<radius<<endl;
+
+    drawCircle(centerX, centerY, radius);
+
+    return 0;
+}
