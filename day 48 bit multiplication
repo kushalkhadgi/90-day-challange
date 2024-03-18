@@ -1,0 +1,43 @@
+#include <string>
+#include <iostream>
+using namespace std;
+
+string calculateBit(int number)
+{
+    int count = 0, bit;
+    int array[32];
+    string result;
+    while(number > 0)
+    {
+        bit = number % 2;
+        number /= 2;
+        array[count++] = bit;
+    }
+
+    for(int i = count-1; i >= 0; i--)
+    {
+        result.push_back(array[i] + '0');
+    }
+    return result;
+}
+
+int main()
+{
+    int num1, num2;
+
+    cout<<"Enyter two number "<< endl;
+    cin>>num1 >> num2;
+
+    string result1 = calculateBit(num1);
+    string result2 = calculateBit(num2);
+
+    int bit1 = stoi(result1);
+    cout<<bit1<<endl;
+    int bit2 = stoi(result2);
+    cout<<bit2<<endl;
+
+    cout<<bit1 << " * "<< bit2<< " = "<<calculateBit(num1 * num2)<<endl;
+    cout<<num1 << " * "<< num2<< " = "<<num1 * num2;
+
+    return 0;
+}
