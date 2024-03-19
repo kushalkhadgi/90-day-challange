@@ -1,0 +1,32 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int calculate(int bit, int number, int count)
+{
+    int last_bit;
+
+    if(bit == 0)
+        return number;
+    
+    last_bit = bit % 10;
+    bit /= 10;
+    // number = calculate(bit, number, ++count) + last_bit * pow(2, count);
+    number = number + last_bit * pow(2, count);
+
+    return calculate(bit, number, ++count);
+
+}
+
+
+int main()
+{
+    int bit;
+    cout<<"Enter the bit number : ";
+    cin>>bit;
+    
+    int result = calculate(bit, 0, 0);
+
+    cout<<result;
+    return 0;
+}
