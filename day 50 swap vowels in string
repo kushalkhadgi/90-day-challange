@@ -1,0 +1,59 @@
+bool vowel(char alphabet)
+{
+    if(alphabet == 'a' || alphabet == 'e' || alphabet == 'i' || alphabet == 'o' || alphabet == 'u')
+    {
+        return true;
+    }
+    return false;
+}
+
+void reverse(string input)
+{
+    int start = 0, end = input.size() - 1;
+
+    while(end > start)
+    {
+        while(!vowel(input[start]) && end > start)
+        {
+            start++;
+        }
+        while(!vowel(input[end]) && end > start)
+        {
+            end--;
+        }
+
+        if(vowel(input[start]) && vowel(input[end]))
+        {
+            swap(input[start], input[end]);
+            start++;
+            end--;
+        }
+    }
+
+    cout<<input;
+    return;
+}
+
+int main()
+{
+    string input;
+    cout<<"Enter the sstring : ";
+    cin>>input;
+    int count = 0;
+
+    for(auto i: input)
+    {
+        if(vowel(i))
+            count++;
+    }
+
+    if(count & 1)
+    {
+        cout<<"Please enter valid word to swap vowels"<<endl;
+        return main();
+    }
+    else
+        reverse(input);
+
+    return 0;
+}
