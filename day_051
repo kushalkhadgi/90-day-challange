@@ -1,0 +1,52 @@
+
+#include <iostream>
+using namespace std;
+
+void calculate(int array[], int length, int *result)
+{
+    long int product;
+    for(int i = 0; i < length; i++)
+    {
+        product = 1;
+        for(int j = 0; j < length; j++)
+        {
+            // if(i != j)
+            // {
+            //      product = product * array[j];
+            // }
+            if(i == j)
+                continue;
+            else
+            {
+                product *= array[j];
+            }
+        }
+        result[i] = product;
+    }
+
+
+    return ;
+}
+
+int main()
+{
+    int number;
+    cout<<"enter the size of array : ";
+    cin>>number;
+    int array[number];
+    int result[number] ={0};
+    cout<<"Enter the array "<<endl;
+    for(auto i = 0; i < number; i++)
+    {
+        cin>>array[i];
+    }
+
+    calculate(array, number, result);
+
+    for(int i = 0; i < number; i++)
+    {
+        cout<<result[i]<<" ";
+    }
+
+    return 0;
+}
