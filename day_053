@@ -1,0 +1,29 @@
+
+#include <iostream>
+using namespace std;
+
+int calculate_length(string input, int length)
+{
+    int count = 0;
+    int i = length - 1;
+    while(input[i] != ' ')
+    {
+        count++;
+        --i;
+    }
+    return count;
+}
+
+int main()
+{
+    string input;
+    cout<<"Enter the string : ";
+    getline(cin, input);
+    int length = input.size();
+
+    int result = calculate_length(input, length);
+
+    cout<<"Length of last word is "<<result;
+
+    return 0;
+}
