@@ -1,1 +1,51 @@
-ndcsbz zhsbsya zbzjsvs zhzzghz xk ksvz. n 
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+void printWord(string input, int index)
+{
+    int countIndex = 0;
+    int countSpace = 0;
+    while(countSpace != index-1 && countIndex < input.size())
+    {
+        if(input[countIndex] == ' ')
+        {
+            countSpace += 1;
+        }
+        countIndex++;
+    }
+    int i = countIndex;
+    while(input[countIndex] != ' ')
+    {
+        cout<<input[countIndex];
+        countIndex++;
+    }
+}
+
+int main()
+{
+    string input;
+    cout<<"Enter the Sentence "<<endl;
+    getline(cin, input);
+
+    int length = input.size();
+    int index, count = 0;
+    cout<<"Enter the word of the sentence to print : ";
+    cin>>index;
+
+    for(auto i: input)
+    {
+        if(i == ' ')
+            count += 1;
+    }
+    if(count + 1 < index)
+    {
+        cout<<"Invalid Index"<<endl;
+        cout<<"Please enter valid index"<<endl;
+        return main();
+    }
+
+    printWord(input, index);
+    return 0;
+}
