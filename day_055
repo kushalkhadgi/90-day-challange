@@ -1,0 +1,47 @@
+#include <iostream>
+
+using namespace std;
+
+void findSum(int array[], int length, int target)
+{
+    for(int i = 0; i < length; i++)
+    {
+        for(int j = 0; j < length; j++)
+        {
+            for(int k = 0; k < length; k++)
+            {
+                if(array[i] + array[j] + array[k] == target)
+                {
+                    cout<<"Sum"<<endl;
+                    cout<<array[i] <<" + "<< array[j] <<" + "<< array[k]<<" = "<<array[i] + array[j] + array[k];
+                    return;
+                }
+            }
+        }
+    }
+    cout<<"Invalid target ";
+    return;
+}
+
+int main()
+{
+    int length, target;
+
+    cout<<"Enter the length of array : ";
+    cin>>length;
+
+    int array[length];
+    cout<<"Enter the elements of array"<<endl;
+    for(auto i = 0; i < length; i++)
+    {
+        cin>>array[i];
+    }
+
+    cout<<"enter the target : ";
+    cin>>target;
+
+
+    findSum(array, length, target);
+
+    return 0;
+}
