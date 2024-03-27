@@ -1,0 +1,64 @@
+#include <string>
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void calculate(int length, string inputArray[], vector<int>&result, char ch)
+{
+    bool check = 0;
+    for(auto word = 0; word < length; word++)
+    {
+        for(auto character: inputArray[word])
+        {
+            if(character == 'A' + ch || character == 'a' + ch)
+            // if(tolower(ch) == tolower(character))
+            {
+                result.push_back(word);
+                check = 1;
+                break;
+            }
+        }
+    }
+    if(!check)
+    {
+        cout<<"Given character is not present anywhere";
+    }
+    return;
+}
+int main()
+{
+    int number;
+    cout<<"Enter the number of words in the array : ";
+    cin>>number;
+    string inputArray[number];
+    char ch;
+
+    cout<<"Enter the words in the array"<<endl;
+    for(auto i = 0; i < number; i++)
+    {
+        cin>>inputArray[i];
+    }
+
+    cout<<"Enter the character to check in the word : ";
+    cin>>ch;
+
+    vector<int>result;
+
+    if(isupper(ch))
+    {
+        ch = ch - 'A';
+    }
+    else
+    {
+        ch = ch - 'a';
+    }
+    calculate(number, inputArray, result, ch);
+    
+    // calculate(number, inputArray, result, ch);
+
+    for(auto a: result)
+    {
+        cout<<a;    
+    }
+    return 0;
+}
