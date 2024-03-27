@@ -1,1 +1,67 @@
-fskavs zhscaja zys zhsbslz x ichxba s
+#include <iostream>
+#include <string>
+using namespace std;
+
+bool isUppercase(char alphabet)
+{
+    if(alphabet >= 'A' && alphabet <= 'Z')
+    {
+        return true;
+    }
+    return false;
+}
+
+bool isLowercase(char alphabet)
+{
+    if(alphabet >= 'a' && alphabet <= 'z')
+    {
+        return true;
+    }
+    return false;
+}
+
+void cipherText(string input, int key)
+{
+    char alphabet;
+    string result;
+    for(auto i: input)
+    {
+        // if((i >= 'a' && i <= 'z') || (i >= 'A' && i <= 'Z'))
+        if((i >= 97 && i <= 122) || (i >= 65 && i <= 90))
+        {
+            if(isUppercase(i))
+            {
+                alphabet = 'A' + ((i + key - 'A') % 26);
+            }
+
+            if(isLowercase(i))
+            {
+                alphabet = 'a' + ((i + key - 'a') % 26);
+            }
+        }
+        else
+        {
+            alphabet = i;
+        }
+
+        result.push_back(alphabet);
+    }
+    cout<<result;
+    return;
+}
+
+int main()
+{
+    string input;
+    int key;
+
+    cout<<"Sentence for Cipher Text"<<endl;
+    getline(cin, input);
+
+    cout<<"Enter the key for cipher Text : ";
+    cin>>key;
+
+    cipherText(input, key);
+
+    return 0;
+}
