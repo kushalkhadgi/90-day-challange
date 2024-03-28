@@ -1,0 +1,44 @@
+#include <vector>
+#include <iostream>
+#include <string>
+using namespace std;
+
+void search(string input, char ch, vector<int>&answer)
+{
+    unsigned int start, end;
+    for(int index = 0; index < input.size(); index++)
+    {
+        start = end= 0;
+        while(start >= 0 && input[index-start] != ch)
+        {
+            start++;
+        }
+        while(end < input.size()-1 && input[index+end] != ch)
+        {
+            end++;
+        }
+        answer.push_back(min(start, end));
+    }
+    return;
+}
+
+int main()
+{
+    string input;
+    cout<<"Enter the string in lowercase : ";
+    cin>>input;
+
+    char ch;
+    cout<<"Enter Charter : ";
+    cin>>ch;
+
+    vector<int>answer;
+
+    search(input, ch, answer);
+
+    for(auto a: answer)
+    {
+        cout<<a<<" ";
+    }
+    return 0;
+}
