@@ -1,0 +1,47 @@
+#include <iostream>
+using namespace std;
+
+bool isLeapYear(int year) {
+    if((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0));
+        return true;
+    return false;
+}
+
+int main() {
+    int count = 0;
+
+    int tm_mday1, tm_mon1, tm_year1;
+    int tm_mday2, tm_mon2, tm_year2;
+
+    cout << "Enter starting date (dd mm yyyy): ";
+    cin >> tm_mday1 >> tm_mon1 >> tm_year1;
+
+    cout << "Enter ending date (dd mm yyyy): ";
+    cin >> tm_mday2 >> tm_mon2 >> tm_year2;
+
+    int month[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+
+    if (isLeapYear(tm_year1))
+        month[1] = 29;
+    if (isLeapYear(tm_year2))
+        month[1] = 29;
+
+
+    count = tm_mday2 - tm_mday1;
+
+    for (int i = tm_mon1; i < tm_mon2; ++i) {
+        count += month[i - 1];
+    }
+
+    for (int i = tm_year1; i < tm_year2; ++i) {
+        if (isLeapYear(i))
+            count += 366;
+        else
+            count += 365;
+    }
+
+    cout << "Number of days between the two dates: " << count << endl;
+
+    return 0;
+}
