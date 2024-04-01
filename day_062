@@ -1,0 +1,50 @@
+
+#include <iostream>
+using namespace std;
+
+
+int minDeleteSum(string s1, string s2, int i, int j) 
+{
+  if (i == s1.length()) {
+    int sum = 0;
+    for (; j < s2.length(); j++) {
+      sum += (int)s2[j];
+    }
+    return sum;
+  }
+  if (j == s2.length()) {
+    int sum = 0;
+    for (; i < s1.length(); i++) {
+      sum += (int)s1[i]; 
+    }
+    return sum;
+  }
+
+  if (s1[i] == s2[j]) {
+    return minDeleteSum(s1, s2, i + 1, j + 1);
+  }
+
+  int option1 = minDeleteSum(s1, s2, i + 1, j) + (int)s1[i];
+  int option2 = minDeleteSum(s1, s2, i, j + 1) + (int)s2[j];
+
+  return min(option1, option2);
+}
+
+
+int main()
+{
+    string s1;
+    string s2;
+    
+    cout<<"Enter first String : ";
+    cin>>s1;
+
+    cout<<"Enter second String : ";
+    cin>>s2;
+
+    int sum = minDeleteSum(s1, s2, 0, 0);
+    
+    cout<<sum;
+    
+    return 0;
+}
