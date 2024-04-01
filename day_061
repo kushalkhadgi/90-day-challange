@@ -1,0 +1,22 @@
+
+#include <iostream>
+using namespace std;
+
+
+int main()
+{
+    string input;
+    cout<<"Enter the String : ";
+    cin>>input;
+
+    for(auto i = 0; i < input.length(); i++)
+    {
+        int temp = input[i];
+        if(int(input[i]) <= 57 && int(input[i]) >= 48)
+        {
+            input[i] += int(input[i-1]) - '0';
+        }
+    }
+    cout<<input;
+    return 0;
+}
