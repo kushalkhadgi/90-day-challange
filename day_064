@@ -1,0 +1,65 @@
+#include <iostream>
+#include <string>
+#include <unordered_map>
+using namespace std;
+
+int Fdistinct(string s1, string s2)
+{
+    int count = 0;
+    for(auto i = 0; i < s1.length(); i++)
+    {
+        if(s1[i] != s2[i])
+            count++;
+    }
+    return count;
+}
+
+bool compare(string s1, string s2, int count1, int count2)
+{
+    if(count1 == count2)
+    {
+        return true;
+    }
+
+    for(auto i = 0; i < min(s1.length(), s2.length()); i++)
+    {
+        if(s1[i] == s2[i])
+        {
+            int index = rand() % s2.length()+1;
+            if(s2[index] == s1[i])
+            {
+                i--;
+            }
+            if(s2[index] != s1[i])
+            {
+                swap(s2[index], s1[i]);
+                break;
+            }
+        }
+    }
+    count1 = Fdistinct(s1, s2);
+    count2 = Fdistinct(s2, s1);
+
+    return count1 == count2;
+}
+
+int main()
+{
+    string s1, s2;
+    cout<<"Enter two String"<<endl;
+    cin>>s1>>s2;
+
+    if(s1.length() != s2.length())
+    {
+        cout<<"Please provide both string of equal length"<<endl;
+        return main();
+    }
+
+    int count1 = Fdistinct(s1, s2);
+    int count2 = Fdistinct(s2, s1);
+
+    bool result = compare(s1, s2, count1, count2);
+    cout<<endl<<result;
+
+    return 0;
+}
