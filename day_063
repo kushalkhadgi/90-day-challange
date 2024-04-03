@@ -1,1 +1,37 @@
-msgshz zjsgbsus zjsgsbsh jxhsbzhzls x zjsvbsbzbz hu JB 
+
+#include <iostream>
+#include <string>
+usingnamespace std;
+
+void subsequence(string smString, string lgString)
+{
+    int count = 0;
+    for(auto i = 0; i < lgString.length(); i++)
+    {
+        if(lgString[i] != smString[i])
+        {
+            count++;
+            smString.push_back(lgString[i]);
+        }
+    }
+
+    cout<<"Number of words added to make a Substring is "<<count<<endl;
+    cout<<"Substring is "<<smString;
+}
+
+int main()
+{
+    string s1, s2;
+    cout<<"Enter two String"<<endl;
+    cin>>s1>>s2;
+
+    if(s1.length() > s2.length())
+    {
+        subsequence(s2, s1);
+    }
+    if(s2.length() >= s1.length())
+    {
+        subsequence(s1, s2);
+    }
+    return 0;
+}
