@@ -1,0 +1,28 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void change(string input) {
+    vector<string> array;
+    for(int i = 0; i < input.length(); i++) {
+        string word = ""; 
+        while(i < input.length() && input[i] != ' ') {
+            word.push_back(input[i]);
+            i++;
+        }
+        array.push_back(word);
+    }
+
+    for(auto print : array) {
+        cout<<endl<<print<< endl;
+    }
+}
+
+int main() {
+    string input;
+    cout << "Enter a sentence"<<endl;
+    getline(cin, input);
+
+    change(input);
+    return 0;
+}
