@@ -1,0 +1,55 @@
+#include <iostream>
+#include <algorithm>
+#include <string>
+
+using namespace std;
+int main() 
+{
+    int number;
+    cout << "Enter Number: ";
+    cin >> number;
+
+    string array[number];
+    cout << "Enter the elements" << endl;
+
+    for (int i = 0; i < number; i++) 
+    {
+        cin >> array[i];
+    }
+
+    string answer[number];
+    copy(array, array + number, answer);
+    sort(answer, answer + number);
+
+    for (int i = 0; i < number; i++) 
+    {
+        for (int j = 0; j < number; j++) 
+        {
+            if (array[j] == answer[i]) 
+            {
+                if (i == 0) 
+                {
+                    array[j] = "Gold Medal";
+                }
+                else if (i == 1) 
+                {
+                    array[j] = "Silver Medal";
+                }
+                else if (i == 2) 
+                {
+                    array[j] = "Bronze Medal";
+                } 
+                else 
+                {
+                    array[j] = to_string(i + 1);
+                }
+            }
+        }
+    }
+
+    for (auto i : array) {
+        cout << i << " ";
+    }
+
+    return 0;
+}
