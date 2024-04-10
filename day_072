@@ -1,0 +1,50 @@
+#include <iostream>
+#include <string>
+#include <climits> 
+using namespace std;
+
+bool check(string str, char ch, int index) {
+    for (int i = 0; i < index; i++) {
+        if (str[i] == ch) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int main() {
+    string str;
+    cout << "Enter string: ";
+    cin >> str;
+
+    string answer;
+
+    int occurrence[256] = {0}; 
+
+    for (int i = 0; i < str.length(); i++) {
+        occurrence[str[i]]++;
+    }
+
+    for (int i = 0; i < str.length(); i++) {
+        char maxChar = '\0';
+        int max = INT_MIN;
+
+        for (int j = 0; j < 256; j++) {
+            if (occurrence[j] > max) {
+                max = occurrence[j];
+                maxChar = static_cast<char>(j);
+            }
+        }
+
+        if (maxChar != '\0') {
+            for (int k = 0; k < max; k++) {
+                answer.push_back(maxChar);
+            }
+
+            occurrence[maxChar] = 0;
+        }
+    }
+
+    cout << "Result string sorted by occurrence: " << answer << endl;
+    return 0;
+}
