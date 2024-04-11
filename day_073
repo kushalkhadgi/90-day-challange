@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+
+string excelColumn(int number)
+{
+    string answer;
+    while(number  > 0)
+    {
+        int remaining = number % 26;
+        if(remaining == 0)
+        {
+            answer.push_back('Z');
+            number /= 26;
+        }
+        else{
+            answer.push_back(remaining + 'A' );
+            number /= 26;
+        }
+    }
+    return answer;
+}
+
+int main()
+{
+    int number;
+    cout<<"Enter Number : ";
+    cin>>number;
+    
+    string answer = excelColumn(number);
+    
+    cout<<answer;
+    
+    return 0;
+}
+
+
+
+
+Durga palace
+
