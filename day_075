@@ -1,0 +1,69 @@
+#include<iostream>
+#include<limits.h>
+using namespace std;
+
+int min(int array[], int length)
+{
+    int minimum = INT_MAX;
+    for(auto i = 0; i < length; i++)
+    {
+        if(array[i] == 0)
+            continue;
+        else if(array[i] < minimum)
+        {
+            minimum = array[i];
+        }
+    }
+    return minimum;
+}
+
+bool run(int *array, int length)
+{
+    for(int i = 0; i < length; i++)
+    {
+        if(array[i] != 0)
+            return false;
+    }
+    return true;
+}
+
+int sub(int *array, int length, int &count)
+{
+    if(run(array, length))
+    {
+        return count;
+    }
+    int minimum = min(array, length);
+
+    for(auto i = 0; i < length; i++)
+    {
+        if(array[i] == 0)
+            continue;
+        array[i] -= minimum;
+    }
+    sub(array, length, ++count);
+}
+
+int main()
+{
+    int count = 0;
+    int number;
+    cout<<"Enter the size of array : ";
+    cin>>number;
+
+    int array[number];
+    cout<<"enter the elements in the array"<<endl;
+    for(int i = 0; i < number; i++)
+    {
+        cin>>array[i];
+    }
+
+    count = sub(array, number, count);
+
+    // for(auto i: array)
+    // {
+    //     cout<<i<<" ";
+    // }
+    cout<<endl<<count;
+    return 0;
+}
