@@ -1,0 +1,71 @@
+#include<iostream>
+#include<string>
+
+using namespace std;
+
+bool duplicate(int index, string input, string find)
+{
+    for(auto i = 0; i < find.length(); i++)
+    {
+        if(input[index++] != find[i])
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+string change(int index, string input, string replace, int findLength)
+{
+    string answer;
+    for(auto i = 0; i < index; i++)
+    {
+        answer.push_back(input[i]);
+    }
+
+    for(auto i = 0; i < replace.length(); i++)
+    {
+        answer.push_back(replace[i]);
+    }
+
+    for(auto i = index+findLength; i < input.length(); i++)
+    {
+        answer.push_back(input[i]);
+    }
+
+    return answer;
+}
+
+
+int main()
+{
+    string input;
+    cout<<"Enter Paragraph"<<endl;
+    getline(cin, input);
+
+    string find;
+    string replace;
+
+    // cout<<input;
+    cout<<endl<<"Enter the string to find"<<endl;
+    cin>>find;
+
+    cout<<"enter the string to replace"<<endl;
+    cin>>replace;
+
+    int findLength = find.length();
+    string answer;
+    bool scan = 0;
+
+    for(auto i = 0; i < input.length(); i++)
+    {
+        scan = duplicate(i, input, find);
+
+        if(scan)
+        {
+            answer = change(i, input, replace, findLength);
+        }
+    }
+    cout<<answer;
+    return 0;
+}
