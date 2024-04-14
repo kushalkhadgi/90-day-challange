@@ -11,10 +11,10 @@ string excelColumn(int number)
         if(remaining == 0)
         {
             answer.push_back('Z');
-            number /= 26;
+            number /= 26 - 1;
         }
         else{
-            answer.push_back(remaining + 'A' );
+            answer.push_back(remaining + 64 );
             number /= 26;
         }
     }
