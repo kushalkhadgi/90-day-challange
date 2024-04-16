@@ -1,0 +1,28 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    int number;
+    cout<<"Enter Length : ";
+    cin>>number;
+
+    pair<int, int>cost[number];
+
+    cout<<"Enter cost"<<endl;
+    for(int i = 0; i < number; i++)
+    {
+        cin>>cost[i].first>>cost[i].second;
+    }
+
+    int sum = 0;
+
+    for(auto i = 0; i < number; i++)
+    {
+        sum += min(cost[i].first, cost[i].second);
+    }
+
+    cout<<sum;
+    return 0;
+}
