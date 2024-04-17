@@ -1,0 +1,44 @@
+#include <iostream>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int main()
+{
+    int number;
+    cout<<"Enter Length of barcodes : ";
+    cin>>number;
+
+    int barcode[number];
+
+    cout<<"Enter barcode numbers"<<endl;
+    for(auto i = 0; i < number; i++)
+    {
+        cin>>barcode[i];
+    }
+
+    vector<int>answer;
+    int count = 0;
+    answer.push_back(barcode[rand() % number]);
+    int length = answer.size();
+
+    while(length <= number)
+    {
+        count++;
+        int num = rand() % number;
+        if(barcode[num] == answer[length-1])
+        {
+            continue;
+        }
+        answer.push_back(barcode[num]);
+        length++;
+    }
+    for(auto i: answer)
+    {
+        cout<<i<<" ";
+    }
+    cout<<endl<<count;
+    return 0;
+}
