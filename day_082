@@ -1,0 +1,36 @@
+#include <iostream>
+#include <vector> 
+using namespace std;
+
+int main() {
+    int number;
+    cout<<"Enter Length of Array : ";
+    cin>>number;
+    
+    
+    int array[number];
+    cout<<"Enter array"<<endl;
+    for(int i = 0; i < number; i++)
+    {
+        cin>>array[i];
+    }
+    
+    vector<int>answer;
+    for(int k = 0; k < number - 2; k++)
+    {
+        int product = array[k] * array[k+1] * array[k+2];
+        answer.push_back(product);
+    }
+    
+    int max = INT32_MIN;
+    for(auto i: answer)
+    {
+        if(max < i)
+        {
+            max = i;
+        }
+    }
+    cout<<max;
+
+    return 0;
+}
