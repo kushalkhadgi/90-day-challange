@@ -1,0 +1,43 @@
+
+#include <iostream>
+using namespace std;
+
+int factorial(int number)
+{
+    int product = 1;
+    if(number == 0)
+    {
+        return product;
+    }
+
+    for(int i = 1; i <= number; i++)
+    {
+        product *= i;
+    }
+    
+    return product;
+}
+
+int main()
+{
+    int number;
+    cout<<"enter Number : ";
+    cin>>number;
+
+    int fact = factorial(number);
+
+    int count = 0;
+    cout<<"Factorial = "<<fact<<endl;
+    while(fact > 0)
+    {
+        int rem = 0;
+        rem = fact % 10;
+        if(rem == 0)
+        {
+            count++;
+        }
+        fact /= 10;
+    }
+    cout<<count;
+    return 0;
+}
