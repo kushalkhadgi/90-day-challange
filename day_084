@@ -1,0 +1,29 @@
+#include <iostream>
+#include <string>
+#include <math.h>
+using namespace std;
+
+int column(string columnTitle, int length)
+{
+    int sum = 0;
+    for(auto i = 0; i < length; i++)
+    {
+        int position = length - 1 - i;
+        sum += pow(26, position) * (columnTitle[i] - 64);
+    }
+    return sum;
+}
+
+int main()
+{
+    string columnTitle;
+    cout<<"Enter Column Title : ";
+    cin>>columnTitle;
+
+    int length = columnTitle.length();
+
+    int answer = column(columnTitle, length);
+    cout<<answer;
+
+    return 0;
+}
