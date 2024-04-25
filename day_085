@@ -1,0 +1,98 @@
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+int count(string input, char alphabet)
+{
+    int count = 0;
+    for(char i: input)
+    {
+        if(i == alphabet)
+        {
+            count++;
+        }
+    }
+    return count;
+}
+
+void solution(string input, int number[])
+{
+    
+    for(auto i: input)
+    {
+        if(i == 'z')
+        {
+            number[0]++;
+        }
+        if(i == 'w')
+        {
+            number[2]++;
+        }if(i == 'u')
+        {
+            number[4]++;
+        }
+        if(i == 'x')
+        {
+            number[6]++;
+        }
+        if(i == 'g')
+        {
+            number[8]++;
+        }
+    }
+    for(auto i: input)
+    {
+        if(i == 'o')
+        {
+            number[1] = count(input, i) - number[2] - number[4] - number[0];
+        }
+        if(i == 'h')
+        {
+            number[3] = count(input, i) - number[8];
+        }
+        if(i == 'f')
+        {
+            number[5] = count(input, i) - number[4];
+        }
+        if(i == 's')
+        {
+            number[7] = count(input, i) - number[6];
+        }
+        if(i == 'i')
+        {
+            number[9] = count(input, i) - number[8] - number[6] - number[5];
+        }
+    }
+}
+
+int main()
+{
+    string input;
+    cout<<"Enter String : ";
+    cin>>input;
+
+    int number[9] = {'\0'};
+
+    solution(input, number);
+
+    vector<int>answer;
+    for(int i = 0; i < 9; i++)
+    {
+        if(number[i] != '\0')
+        {
+            int j = 1;
+            while(j <= number[i])
+            {
+                answer.push_back(i);
+                j++;
+            }
+        }
+    }
+
+    for(auto i: answer)
+    {
+        cout<<i;
+    }
+    return 0;
+}
