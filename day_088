@@ -1,0 +1,54 @@
+
+#include <iostream>
+using namespace std;
+
+int solution(int array[], int length, int k)
+{
+    int answer = 0;
+
+    for(int j = 0; j < length; j++)
+    {
+        int max_length = 0;
+        int remaining = k;
+        for(int i = j; i < length; i++ )
+        {
+            if(array[i] == 1)
+            {
+                ++max_length;
+            }
+            else if(remaining > 0)
+            {
+                ++max_length;
+                --k;
+            }
+            else
+                break;
+        }
+        answer = max(answer, max_length);
+    }
+    cout<<endl<<"done"<<endl;
+    return answer;
+}
+
+int main()
+{
+    int number;
+    cout<<"Enter length of array : ";
+    cin>>number;
+
+    int array[100];
+    cout<<"Enter array"<<endl;
+    for(int i = 0; i < number; i++)
+    {
+        cin>>array[i];
+    }
+
+    int k;
+    cout<<"Enter k : ";
+    cin>>k;
+
+    int answer = solution(array, number, k);
+
+    cout<<answer;
+    return 0;
+}
