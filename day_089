@@ -1,0 +1,57 @@
+#include <iostream>
+using namespace std;
+
+bool check(string input, char open, char close)
+{
+    int positive = 0, negative = 0;
+    for(int i = 0; i < input.length(); i++)
+    {
+        if(input[i] == open)
+        {
+            positive++;
+        }
+        else if(input[i] == close)
+        {
+            negative++;
+        }
+    }
+    return positive == negative;
+}
+
+int main()
+{
+    string input;
+    cout<<"Enter the String : ";
+    cin>>input;
+
+    int count = 0;
+
+    for(int i = 0; i < input.length(); i++)
+    {
+        if((input[i] == 41 || input[i] ==  93 || input[i] == 125) && count == 0)
+        {
+            cout<<"Not Balanced";
+            return 0;
+        }
+        else if(input[i] == 40 || input[i] == 91 || input[i] == 123 || input[i] == 60)
+        {
+            count++;
+            continue;
+        }
+        else if(input[i] == 41 || input[i] ==  93 || input[i] == 125 || input[i] == 62)
+        {
+            count--;
+            continue;
+        }
+    }
+
+    if(count == 0 && check(input, '(', ')') && check(input, '[', ']') && check(input, '{', '}') && check(input, '<', '>') )
+    {
+        cout<<"Balanced";
+        return 0;
+    }
+    else{
+        cout<<"Not Balanced";
+        return 0;
+    }  
+}
